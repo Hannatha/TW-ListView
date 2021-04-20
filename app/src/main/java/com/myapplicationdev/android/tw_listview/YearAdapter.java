@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class YearAdapter extends ArrayAdapter<Year> {
-    private ArrayList<Year> year;
+public class YearAdapter extends ArrayAdapter<String> {
+    private ArrayList<String> year;
     private Context context;
     private TextView tvYear;
 
-    public YearAdapter(Context context, int resources, ArrayList<Year> objects) {
+    public YearAdapter(Context context, int resources, ArrayList<String> objects) {
         super(context, resources, objects);
         year = objects;
         this.context = context;
@@ -24,12 +24,12 @@ public class YearAdapter extends ArrayAdapter<Year> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.row, parent, false);
+        View rowView = inflater.inflate(R.layout.courserow, parent, false);
 
         tvYear = (TextView) rowView.findViewById(R.id.tvYear);
 
-        Year currYear = year.get(position);
-        tvYear.setText(currYear.getYear());
+        String currYear = year.get(position) != null ? year.get(position) : "none";
+        tvYear.setText(currYear);
 
         return rowView;
     }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class FirstActivity extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<Year> al;
+    ArrayList<String> al;
     YearAdapter aa;
 
     @Override
@@ -24,27 +24,22 @@ public class FirstActivity extends AppCompatActivity {
 
         lv = (ListView) this.findViewById(R.id.lvYear);
 
-        al = new ArrayList<Year>();
-        al.add(new Year("Year 1"));
-        al.add(new Year("Year 2"));
-        al.add(new Year("Year 3"));
-        aa = new YearAdapter(this, R.layout.row, al);
+        al = new ArrayList<String>();
+        al.add("Year 1");
+        al.add("Year 2");
+        al.add("Year 3");
+        aa = new YearAdapter(this, R.layout.courserow, al);
         lv.setAdapter(aa);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Year selectedYear = al.get(i);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String selectedYear = al.get(position);
 
                 Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
                 //based on item add info to intent
                 startActivity(intent);
-
-
             }
         });
-
-
-
     }
 }

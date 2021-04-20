@@ -21,7 +21,6 @@ public class SecondActivity extends AppCompatActivity {
         tvYear = (TextView) findViewById(R.id.tvYear);
 
         Intent i = getIntent();
-        String year = i.getStringExtra("year");
         tvYear.setText(year);
 
 
