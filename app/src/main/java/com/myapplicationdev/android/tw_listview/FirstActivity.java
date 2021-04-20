@@ -36,8 +36,9 @@ public class FirstActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String selectedYear = al.get(position);
 
-                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
                 //based on item add info to intent
+                intent.putExtra("year", selectedYear);
                 startActivity(intent);
             }
         });
