@@ -10,16 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ModuleAdapter extends ArrayAdapter<Module> {
-
-    private ArrayList<Module> module;
+public class YearAdapter extends ArrayAdapter<Year> {
+    private ArrayList<Year> year;
     private Context context;
-    private TextView tvModuleName;
-    private ImageView ivModuleImage;
+    private TextView tvYear;
 
-    public ModuleAdapter(Context context, int resources, ArrayList<Module> objects) {
+    public YearAdapter(Context context, int resources, ArrayList<Year> objects) {
         super(context, resources, objects);
-        module = objects;
+        year = objects;
         this.context = context;
     }
 
@@ -28,16 +26,10 @@ public class ModuleAdapter extends ArrayAdapter<Module> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.row, parent, false);
 
-        tvModuleName = (TextView) rowView.findViewById(R.id.tvModule);
-        ivModuleImage = (ImageView) rowView.findViewById(R.id.imageView1);
+        tvYear = (TextView) rowView.findViewById(R.id.tvYear);
 
-        Module currModule = module.get(position);
-        tvModuleName.setText(currModule.getName());
-
-        if (currModule.getImage())
-            ivModuleImage.setImageResource(R.drawable.prog);
-        else
-            ivModuleImage.setImageResource(R.drawable.nonprog);
+        Year currYear = year.get(position);
+        tvYear.setText(currYear.getYear());
 
         return rowView;
     }
